@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello admin</title>
+    <link rel="stylesheet" href="admin_panel.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="admin_panel.js"></script>
+</head>
+<body onload="getUsersList(JSON.parse(localStorage.getItem('Users') || '[]'), 1)">
+    <div id="mainAdmin">
+        <div id="mainContent">
+            <h3>User settings</h3>
+            <form id="addUserInAdminMenu" onsubmit="addUserAdmin()">
+                <input type="text" placeholder="Name" id="nameInAdmin" pattern="^[A-Za-z. ]{3,20}$" required>
+                <input type="text" placeholder="Surname" id="surnameInAdmin" pattern="^[A-Za-z. ]{3,20}" required>
+                <input type="email" placeholder="Email" id="emailInAdmin"
+                       pattern="^[A-Za-z0-9_]{4,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,4}$" required>
+                <input type="text" placeholder="Phone number" id="phoneInAdmin" pattern="^(\+7|8)(\(?7\d{2}\)?)(\d{7}$)" required>
+                <input type="password" placeholder="Password" id="passInAdmin" pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$" required>
+                <button class="submit">Submit</button>
+            </form>
+            <hr>
+            <div id="UserListTables">
+                <table><tr><th>Name</th><th>E-mail</th><th>Phone number</th><th>Password</th>
+                    <th>
+                        <div id="banList"><label id="banListRes">All</label></div>
+                    </th>
+                </tr></table>
+                <hr>
+                <div id="UserList">
+                    <table>
+                        <tbody id="hereUsers"></tbody>
+                    </table>
+                </div>
+                <hr>
+            </div>
+            <div id="divForBan">
+            </div>
+            <div id="divForUpdateData">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

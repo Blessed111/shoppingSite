@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Registration </title>
+		<meta charset="UTF-8">
+	<title>Website</title>
+	<link rel="stylesheet" href="sign.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="fontawesome-free/css/all.min.css">
+	<script src='https://code.jquery.com/jquery-3.5.1.min.js'> </script>
+	<script  src="sign.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		body{
+			background:#ADD8E6;
+		}
+	</style>
+</head>
+<body>
+	<div class="login-page">
+	<div class="form">
+			<form class="register-form" onsubmit="return validation()" action="sign.html">
+				<div class="form-group">
+				<input type="text" id="username" placeholder="Name">
+				<span id="usererror" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+				<input type="text" id="surname" placeholder="Surname">
+				<span id="surnameerror" class="text-danger"></span>
+				</div>
+				 <div class="form-group">
+	            <input type="password" id="password" placeholder="password">
+	            <span id="passworderror" class="text-danger"></span>
+	        </div>
+				<div class="form-group">
+	            <input type="email" id="email" placeholder="email">
+	            <span id="emailerror" class="text-danger"></span>
+	            </div>
+	            <div class="form-group">
+	            <input type="text" id="phone" placeholder="Phone number"/>
+	            <span id="mobileerror" class="text-danger"></span>
+	            </div>
+	            <button type="submit">Create</button>
+	            <p class="message"> Already Registered? <a href="#"> Login </a>
+	            </p>
+	        </form>
+
+	        <form class="login-form">
+	        	<input type="text" id="logInEmail" placeholder="E-mail">
+	        	<input type="password" id="logInPassword" placeholder="Password">
+	        	<button form="" onclick="checkEmailLogIn()"> login </button>
+	        	<p class="message"> Not Registered? <a href="#" > Register </a> </p>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+    		$('.message a').click(function(){
+		$('form').animate({height: "toggle", opacity: "toggle" }, "medium");
+		});
+
+    </script>
+</body>
+
+</html>

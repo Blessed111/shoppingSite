@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+ 
+    <link rel="stylesheet" type="text/css" href="page2_upgraded.css">
+
+     <title> Shop </title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="sign.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body onload="checkUserLogInOut()">
+<header>
+<nav class="menma">
+  <ul class="nav">
+      <li class="nav-items"><a class="active" href="page_1.html">Home</a></li>
+      <li class="nav-items"><a class="active" href="page_3.html">News</a></li>
+      <li class="nav-items"><a href="#"> Shop </a>
+    <ul>
+      <li class="nav-items"><a href="page_2.html">Women</a></li>
+      <li class="nav-items"><a href="page_2men.html">Men</a></li>
+      <li class="nav-items"><a href="page_2boy.html">Boys</a></li>
+      <li class="nav-items"><a href="page_2girl.html">Girls</a></li>    
+    </ul>
+  <li><a href="page_4.html">About</a></li>
+ <li class="sign" id="checkUserLog"></li>
+</ul>
+</nav>
+</header>
+	<h1><i class=" fa fa-shopping-cart"></i></h1>
+
+	<section>
+		<div class="item">
+			<img src="b1.png">
+			<p>Jordan Max 200</p>
+			<h6>$345.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+			
+		</div>
+		<div class="item">
+			<img src="b2.png">
+			<p>Air Jordan 8 Retro</p>
+			<h6>$345.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+		<div class="item">
+			<img src="b3.png">
+			<p>Air XXXIII</p>
+			<h6>$345.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+		<div class="item">
+			<img src="b4.png">
+			<p>Converse All Star</p>
+			<h6>$345.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+	</section>
+	<div class="select">
+	</div>
+
+<footer>
+	<div class="mmm">
+	<div class="social">
+		<div class="find">
+			<a href="map.html"><i class="fas fa-map-marker-alt"></i>Find a store</a>
+		</div>
+		<div class="contact">
+			<p>Contact us</p>
+			<p>+7(707)000-01-01</p>
+			<p>+7(777)123-12-12</p>
+		</div>
+
+		<div class="social-menu">
+			<h4 class="connect">Stay Connected</h4>
+
+			<ul class="social-icon">
+				<li><a href="#" class="social-link"><i class="fab fa-facebook-square"></i></a></li>
+				<li><a href="#" class="social-link"><i class="fab fa-twitter-square"></i></a></li>
+				<li><a href="#" class="social-link"><i class="fab fa-youtube"></i></a></li>
+				<li><a href="#" class="social-link"><i class="fab fa-instagram"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</footer>
+</body>
+</html>
+<script type="text/javascript">
+	var noti = document.querySelector('h1');
+	var select = document.querySelector('.select');
+	var button = document.getElementsByTagName('button');
+	for(var but of button){
+		but.addEventListener('click', (e)=>{
+			let lastUser = JSON.parse(localStorage.getItem('lastUser') || '[]');
+			if(lastUser.length == 0){
+				swal("Oops...!", "You need to sign in!", "error");
+			}
+			else {
+			var add = Number(noti.getAttribute('data-count') || 0);
+			noti.setAttribute('data-count', add +1);
+			noti.classList.add('zero')
+
+			// image --animation to cart ---//
+			var image = e.target.parentNode.querySelector('img');
+			var span = e.target.parentNode.querySelector('span')
+			var s_image = image.cloneNode(false);
+			span.appendChild(s_image);
+			span.classList.add("active");
+			setTimeout(()=>{
+				span.classList.remove("active");
+				span.removeChild(s_image);	
+			}, 400); 
+			
+
+			// copy and paste //
+			var parent = e.target.parentNode;
+			var clone = parent.cloneNode(true);
+			select.appendChild(clone);
+			clone.lastElementChild.innerText = "Buy-now";
+			
+			if (clone) {
+				noti.onclick = ()=>{
+					select.classList.toggle('display');
+				}	
+			}
+		}
+		})
+	}
+</script>
